@@ -1,0 +1,24 @@
+From 9a13f1344c156c2a9c5ef497c1dcd213d7096935 Mon Sep 17 00:00:00 2001
+From: Sergey Vinokurov <serg.foo@gmail.com>
+Date: Sun, 21 Dec 2025 20:12:28 +0000
+Subject: [PATCH] Export header still used by ksysguard
+
+---
+ processcore/CMakeLists.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/processcore/CMakeLists.txt b/processcore/CMakeLists.txt
+index f97f17cc..fb266470 100644
+--- a/processcore/CMakeLists.txt
++++ b/processcore/CMakeLists.txt
+@@ -67,6 +67,7 @@ add_subdirectory(plugins)
+ ########### install files ###############
+ 
+ install( FILES
++    extended_process_list.h
+     processes.h
+     process.h
+     process_controller.h
+-- 
+2.51.2
+
