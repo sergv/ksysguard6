@@ -12,7 +12,7 @@
 
 #include <klocalizedstring.h>
 
-#include "../processcore/process.h"
+#include <processcore/process.h>
 #include "ui_ReniceDlgUi.h"
 #include <QButtonGroup>
 #include <QDialogButtonBox>

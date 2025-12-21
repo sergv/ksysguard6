@@ -15,7 +15,7 @@
 #include <QList>
 #include <QString>
 #include <QWidget>
-#include "../processcore/processes.h"
+#include <processcore/processes.h>
 
 class QAction;
 class ScriptingHtmlDialog; // Defined in scripting.cpp file

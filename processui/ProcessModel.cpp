@@ -12,11 +12,11 @@
 #include "ProcessModel_p.h"
 #include "timeutil.h"
 
-#include "../processcore/extended_process_list.h"
-#include "../processcore/formatter.h"
-#include "../processcore/process.h"
-#include "../processcore/process_attribute.h"
-#include "../processcore/process_data_provider.h"
+#include <processcore/extended_process_list.h>
+#include <processcore/formatter.h>
+#include <processcore/process.h>
+#include <processcore/process_attribute.h>
+#include <processcore/process_data_provider.h>
 
 #include "processui_debug.h"
 

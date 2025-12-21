@@ -21,7 +21,7 @@
 #include <QUrl>
 
 #include "ksysguardprocesslist.h"
-#include "../processcore/processes.h"
+#include <processcore/processes.h>
 
 #include <KDesktopFile>
 #include <KLocalizedString>

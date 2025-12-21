@@ -18,7 +18,7 @@
 
 #include "ProcessFilter.h"
 #include "ProcessModel.h"
-#include "../processcore/processes.h"
+#include <processcore/processes.h>
 
 class QShowEvent;
 class QHideEvent;

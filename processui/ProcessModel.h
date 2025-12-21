@@ -13,7 +13,7 @@
 
 #include <QAbstractItemModel>
 
-#include "../processcore/processes.h"
+#include <processcore/processes.h>
 
 namespace KSysGuard
 {

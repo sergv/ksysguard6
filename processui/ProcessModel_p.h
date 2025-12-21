@@ -10,7 +10,7 @@
 #define PROCESSMODEL_P_H_
 
 #include "ProcessModel.h"
-#include "../processcore/extended_process_list.h"
+#include <processcore/extended_process_list.h>
 
 #include "config-ksysguard.h"
 #include <QDebug>

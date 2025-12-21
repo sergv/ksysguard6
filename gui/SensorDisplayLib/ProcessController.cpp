@@ -29,7 +29,7 @@
 
 #include "ProcessController.h"
 #include "../processui/ksysguardprocesslist.h"
-#include "../processcore/processes.h"
+#include <processcore/processes.h>
 
 //#define DO_MODELCHECK
 #ifdef DO_MODELCHECK

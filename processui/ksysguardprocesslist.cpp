@@ -50,8 +50,8 @@
 
 #include "processdetails/ProcessDetailsDialog.h"
 #include "ReniceDlg.h"
-#include "../processcore/process_attribute.h"
-#include "../processcore/process_controller.h"
+#include <processcore/process_attribute.h>
+#include <processcore/process_controller.h>
 #include "scripting.h"
 #include "ui_ProcessWidgetUI.h"
 

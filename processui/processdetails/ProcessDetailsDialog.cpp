@@ -14,7 +14,7 @@
 #include <KLocalizedString>
 #include <KMessageWidget>
 
-#include "../processcore/extended_process_list.h"
+#include <processcore/extended_process_list.h>
 
 #include "GeneralTab.h"
 #include "MemoryMapsTab.h"
