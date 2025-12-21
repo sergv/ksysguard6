@@ -1218,56 +1218,6 @@ msgstr "স্ট্যাটাস"
 msgid "Label"
 msgstr "লেবেল"
 
-#. i18n: tag WorkSheet attribute title
-#: SystemLoad2.sgrd:3
-#, kde-format
-msgid "System Load"
-msgstr "সিস্টেম চাপ"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:5
-#, kde-format
-msgid "CPU History"
-msgstr "সি-পি-ইউ ইতিহাস"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:8
-#, kde-format
-msgid "Memory and Swap History"
-msgstr "মেমরি এবং সোয়্যাপ ইতিহাস"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:9
-#, kde-format
-msgid "Memory"
-msgstr "মেমরি"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:10
-#, kde-format
-msgid "Swap"
-msgstr ""
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:12
-#, kde-format
-msgid "Network History"
-msgstr "নেটওয়ার্ক ইতিহাস"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:13
-#, fuzzy, kde-format
-#| msgid "Receiver"
-msgid "Receiving"
-msgstr "রিসিভার"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:14
-#, fuzzy, kde-format
-#| msgid "Send Signal"
-msgid "Sending"
-msgstr "সিগনাল পাঠাও"
-
 #: WorkSheet.cpp:87
 #, kde-format
 msgid "Cannot open the file %1."

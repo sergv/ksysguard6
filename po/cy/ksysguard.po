@@ -1227,57 +1227,6 @@ msgstr "Cyflwr"
 msgid "Label"
 msgstr "Label"
 
-#. i18n: tag WorkSheet attribute title
-#: SystemLoad2.sgrd:3
-#, kde-format
-msgid "System Load"
-msgstr "Llwyth Cysawd"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:5
-#, kde-format
-msgid "CPU History"
-msgstr ""
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:8
-#, kde-format
-msgid "Memory and Swap History"
-msgstr ""
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:9
-#, kde-format
-msgid "Memory"
-msgstr "Cof"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:10
-#, kde-format
-msgid "Swap"
-msgstr ""
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:12
-#, fuzzy, kde-format
-#| msgid "Network"
-msgid "Network History"
-msgstr "Rhwydwaith"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:13
-#, fuzzy, kde-format
-#| msgid "Receiver"
-msgid "Receiving"
-msgstr "Derbynnydd"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:14
-#, fuzzy, kde-format
-#| msgid "Send"
-msgid "Sending"
-msgstr "Anfon"
-
 #: WorkSheet.cpp:87
 #, fuzzy, kde-format
 msgid "Cannot open the file %1."
