@@ -274,10 +274,9 @@ static bool getProcess( int pid, ProcessInfo *ps )
     return false;
   int ttyNo;
   if ( fscanf( fd, "%*d %*s %c %d %*d %*d %d %*d %*u %*u %*u %*u %*u %lu %lu"
-                   "%*d %*d %*d %d %*u %*u %*d %lu %lu",
+                   "%*d %*d %*d %d %*u %*u %*d %lu",
                    &status, (int*)&ps->ppid, &ttyNo,
-                   &ps->userTime, &ps->sysTime, &ps->niceLevel, &ps->vmSize,
-                   &ps->vmRss) != 8 ) {
+                   &ps->userTime, &ps->sysTime, &ps->niceLevel, &ps->vmSize) != 7 ) {
     fclose( fd );
     return false;
   }
@@ -313,13 +312,18 @@ static bool getProcess( int pid, ProcessInfo *ps )
 
   snprintf( buf, BUFSIZE - 1, "/proc/%d/statm", pid );
   buf[ BUFSIZE - 1 ] = '\0';
+  ps->vmRss = -1; //
   ps->vmURss = -1;
   if ( ( fd = fopen( buf, "r" ) ) != 0 )  {
     unsigned long shared;
-    if ( fscanf( fd, "%*d %*u %lu",
-                   &shared)==1) {
+    unsigned long rss;
+    if ( fscanf(fd, "%*d %lu %lu", &rss, &shared) == 2 )
+    {
+      printf("rss = %lu\n", rss);
+      double kbCoeff = sysconf(_SC_PAGESIZE) / 1024;
+      ps->vmRss = rss * kbCoeff;
       /* we use the rss - shared  to find the amount of memory just this app uses */
-      ps->vmURss = ps->vmRss - (shared * sysconf(_SC_PAGESIZE) / 1024);
+      ps->vmURss = (rss - shared) * kbCoeff;
     }
     fclose( fd );
   }
