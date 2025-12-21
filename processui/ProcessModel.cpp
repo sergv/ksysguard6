@@ -2194,11 +2194,6 @@ void ProcessModel::setShowTotals(bool showTotals) // slot
     }
 }
 
-qlonglong ProcessModel::totalMemory() const
-{
-    return d->mMemTotal;
-}
-
 void ProcessModel::setUnits(Units units)
 {
     if (d->mUnits == units)

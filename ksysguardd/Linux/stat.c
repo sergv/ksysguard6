@@ -1030,8 +1030,6 @@ void print24DiskIO( const char* cmd ) {
 		return;
 	}
 	
-	if ( strcmp( name, "total" ) == 0 )
-		output( "%f\n", (float)( ptr->total.delta / timeInterval ) );
 	else if ( strcmp( name, "rio" ) == 0 )
 		output( "%f\n", (float)( ptr->rio.delta / timeInterval ) );
 	else if ( strcmp( name, "wio" ) == 0 )
@@ -1065,10 +1063,7 @@ void print24DiskIOInfo( const char* cmd ) {
 	
 	/* remove trailing '?' */
 	name[ strlen( name ) - 1 ] = '\0';
-	
-	if ( strcmp( name, "total" ) == 0 )
-		output( "Total accesses device %s (%d:%d)\t0\t0\t1/s\n",
-			 devname, major, minor );
+
 	else if ( strcmp( name, "rio" ) == 0 )
 		output( "Read data device %s (%d:%d)\t0\t0\t1/s\n",
 			 devname, major, minor );

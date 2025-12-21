@@ -60,7 +60,6 @@ void SensorManager::retranslate()
 
     mDict.insert(QStringLiteral("mem"), i18n("Memory"));
     mDict.insert(QStringLiteral("physical"), i18n("Physical Memory"));
-    mDict.insert(QStringLiteral("total"), i18n("Total Memory"));
     mDict.insert(QStringLiteral("swap"), i18n("Swap Memory"));
     mDict.insert(QStringLiteral("cached"), i18n("Cached Memory"));
     mDict.insert(QStringLiteral("buf"), i18n("Buffered Memory"));
