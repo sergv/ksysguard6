@@ -62,7 +62,7 @@ set_target_properties(processcore_ksg6 PROPERTIES
 install(TARGETS processcore_ksg6 EXPORT libksysguardLibraryTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 #add_subdirectory(declarative)
-add_subdirectory(plugins)
+# add_subdirectory(plugins)
 
 ########### install files ###############
 
