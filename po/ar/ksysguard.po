@@ -1185,54 +1185,6 @@ msgstr "الحالة"
 msgid "Label"
 msgstr "اللصيقة"
 
-#. i18n: tag WorkSheet attribute title
-#: SystemLoad2.sgrd:3
-#, kde-format
-msgid "System Load"
-msgstr "الحِمل على النظام"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:5
-#, kde-format
-msgid "CPU History"
-msgstr "تأريخ المعالج"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:8
-#, kde-format
-msgid "Memory and Swap History"
-msgstr "تأريخ الذاكرة والتبادل"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:9
-#, kde-format
-msgid "Memory"
-msgstr "الذاكرة"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:10
-#, kde-format
-msgid "Swap"
-msgstr "التبادل"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:12
-#, kde-format
-msgid "Network History"
-msgstr "تأريخ الشبكة"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:13
-#, kde-format
-msgid "Receiving"
-msgstr "يستقبل"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:14
-#, kde-format
-msgid "Sending"
-msgstr "يُرسل"
-
 #: WorkSheet.cpp:87
 #, kde-format
 msgid "Cannot open the file %1."

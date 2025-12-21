@@ -1210,54 +1210,6 @@ msgstr "Состояние"
 msgid "Label"
 msgstr "Ярлык"
 
-#. i18n: tag WorkSheet attribute title
-#: SystemLoad2.sgrd:3
-#, kde-format
-msgid "System Load"
-msgstr "Общая загрузка системы"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:5
-#, kde-format
-msgid "CPU History"
-msgstr "Использование процессора"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:8
-#, kde-format
-msgid "Memory and Swap History"
-msgstr "Память и раздел подкачки"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:9
-#, kde-format
-msgid "Memory"
-msgstr "Память"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:10
-#, kde-format
-msgid "Swap"
-msgstr "Подкачка"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:12
-#, kde-format
-msgid "Network History"
-msgstr "Загрузка сети"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:13
-#, kde-format
-msgid "Receiving"
-msgstr "Приём"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:14
-#, kde-format
-msgid "Sending"
-msgstr "Передача"
-
 #: WorkSheet.cpp:87
 #, kde-format
 msgid "Cannot open the file %1."

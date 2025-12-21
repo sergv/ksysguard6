@@ -1204,54 +1204,6 @@ msgstr "Būsena"
 msgid "Label"
 msgstr "Etiketė"
 
-#. i18n: tag WorkSheet attribute title
-#: SystemLoad2.sgrd:3
-#, kde-format
-msgid "System Load"
-msgstr "Sistemos apkrova"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:5
-#, kde-format
-msgid "CPU History"
-msgstr "Procesoriaus istorija"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:8
-#, kde-format
-msgid "Memory and Swap History"
-msgstr "Atminties ir Swap istorija"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:9
-#, kde-format
-msgid "Memory"
-msgstr "Atmintis"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:10
-#, kde-format
-msgid "Swap"
-msgstr "Swap"
-
-#. i18n: tag display attribute title
-#: SystemLoad2.sgrd:12
-#, kde-format
-msgid "Network History"
-msgstr "Tinklo istorija"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:13
-#, kde-format
-msgid "Receiving"
-msgstr "Gaunama"
-
-#. i18n: tag beam attribute summationName
-#: SystemLoad2.sgrd:14
-#, kde-format
-msgid "Sending"
-msgstr "Siunčiama"
-
 #: WorkSheet.cpp:87
 #, kde-format
 msgid "Cannot open the file %1."
