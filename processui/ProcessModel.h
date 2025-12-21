@@ -15,6 +15,8 @@
 
 #include <processcore/processes.h>
 
+#include "config-ksysguard.h"
+
 namespace KSysGuard
 {
 class Processes;
@@ -130,7 +132,7 @@ public:
      *  setup header function, and make sure you increase PROCESSHEADERVERSION.  This will ensure
      *  that old saved settings won't be used
      */
-#define PROCESSHEADERVERSION 10
+#define PROCESSHEADERVERSION 11
     enum {
         HeadingName = 0,
         HeadingUser,
@@ -147,11 +149,12 @@ public:
         HeadingStartTime,
         HeadingNoNewPrivileges,
         HeadingCommand,
+        // Memory in the X server
+#if HAVE_X11
         HeadingXMemory,
         HeadingXTitle,
+#endif
         HeadingCGroup,
-        // HeadingMACContext,
-        // HeadingVmPSS,
         // This entry should always match the actual last entry in this enum + 1.
         // It is used to determine where plugin-provided headings start.
         HeadingPluginStart = HeadingCGroup + 1,

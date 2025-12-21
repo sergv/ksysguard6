@@ -2146,8 +2146,6 @@ void ProcessModel::setupHeader()
     }
 #endif
     headings << i18nc("process heading", "CGroup");
-    headings << i18nc("process heading", "MAC Context");
-    headings << i18nc("process heading", "Total Memory");
 
     if (d->mHeadings.isEmpty()) { // If it's empty, this is the first time this has been called, so insert the headings
         d->mHeadings = headings;
