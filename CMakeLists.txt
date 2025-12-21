@@ -147,7 +147,17 @@ option(ENABLE_KAUTH_HELPER "Build and install ksysguardprocesslist_helper KAuth 
 add_feature_info(KAUTH_HELPER ${ENABLE_KAUTH_HELPER} "Build and install ksysguardprocesslist_helper KAuth helper")
 
 
-find_package(KSysGuard REQUIRED)
+find_package(KSysGuard REQUIRED COMPONENTS
+  ProcessCore
+  )
+# find_package(KSysGuard ${PROJECT_DEP_VERSION})
+
+set_package_properties(KSysGuard PROPERTIES
+    TYPE REQUIRED
+    DESCRIPTION "The libksysguard collection of libraries"
+    URL https://invent.kde.org/plasma/libksysguard
+)
+
 
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
 add_definitions(-DQT_USE_QSTRINGBUILDER)
@@ -167,8 +177,6 @@ set_package_properties(Sensors PROPERTIES
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 configure_file(config-workspace.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-workspace.h)
 
-add_subdirectory( formatter )
-add_subdirectory( processcore )
 add_subdirectory( processui )
 add_subdirectory( ksgrd )
 add_subdirectory( signalplotter )
@@ -180,9 +188,9 @@ kdoctools_install(po)
 add_subdirectory( pics )
 add_subdirectory( example )
 
-add_subdirectory( ksysguardd )
+# add_subdirectory( ksysguardd )
 
-option(WITH_SYSTEMMONITOR "Build with Plasma Dekstop SystemMonitor" ON)
+option(WITH_SYSTEMMONITOR "Build with Plasma Dekstop SystemMonitor" OFF)
 if(WITH_SYSTEMMONITOR)
     add_subdirectory( systemmonitor )
 endif()

@@ -16,7 +16,7 @@ target_link_libraries(ksignalplotter
         KF6::I18n # klocalizedstring.h
         KF6::IconThemes
     PRIVATE
-        ProcessCore
+        KSysGuard::ProcessCore
 )
 
 #set_target_properties(ksignalplotter PROPERTIES

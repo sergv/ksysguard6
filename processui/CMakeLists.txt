@@ -37,7 +37,7 @@ endif()
 
 target_link_libraries(processui
     PUBLIC
-        ProcessCore
+        KSysGuard::ProcessCore
         Qt::Widgets
         KF6::ConfigCore
     PRIVATE

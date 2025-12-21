@@ -9,7 +9,7 @@
  published by the Free Software Foundation; either version 2 of
  the License or (at your option) version 3 or any later version
  accepted by the membership of KDE e.V. (or its successor approved
- by the membership of KDE e.V.), which shall act as a proxy 
+ by the membership of KDE e.V.), which shall act as a proxy
  defined in Section 14 of version 3 of the license.
 
  This program is distributed in the hope that it will be useful,
@@ -68,8 +68,6 @@ public:
         return false;
     }
 
-    void answerReceived(int id, const QList<QByteArray>& answer ) override;
-
     KSysGuardProcessList* processList()
     {
         return mProcessList;
@@ -78,8 +76,6 @@ public:
 Q_SIGNALS:
     void updated();
     void processListChanged();
-private Q_SLOTS:
-    void runCommand(const QString &command, int id);
 
 private:
     KSysGuardProcessList *mProcessList;

@@ -153,11 +153,11 @@ public:
         HeadingXMemory,
         HeadingXTitle,
         HeadingCGroup,
-        HeadingMACContext,
-        HeadingVmPSS,
+        // HeadingMACContext,
+        // HeadingVmPSS,
         // This entry should always match the actual last entry in this enum + 1.
         // It is used to determine where plugin-provided headings start.
-        HeadingPluginStart = HeadingVmPSS + 1,
+        HeadingPluginStart = HeadingCGroup + 1,
     };
 
     enum { UidRole = Qt::UserRole, SortingValueRole, WindowIdRole, PlainValueRole, PercentageRole, PercentageHistoryRole };

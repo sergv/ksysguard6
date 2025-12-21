@@ -40,7 +40,7 @@ target_link_libraries(ksgrd
     PRIVATE
         KF6::I18n
         KF6::CoreAddons
-        ProcessCore
+        KSysGuard::ProcessCore
 )
 
 #set_target_properties(ksgrd PROPERTIES

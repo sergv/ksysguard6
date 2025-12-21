@@ -128,10 +128,6 @@ void ProcessController::timerTick()  {
     mProcessList->updateList();
 
 }
-void ProcessController::answerReceived( int id, const QList<QByteArray>& answer ) {
-    if(mProcesses)
-        mProcesses->answerReceived(id, answer);
-}
 
 bool ProcessController::addSensor(const QString& hostName,
                                  const QString& sensorName,
@@ -158,11 +154,7 @@ bool ProcessController::addSensor(const QString& hostName,
     /** To use a remote sensor, we need to drill down through the layers, to connect to the remote processes.  Then connect to its signals and slots.
      *  It's horrible I know :( */
     if(!hostName.isEmpty() && hostName != QLatin1String("localhost")) {
-        KSysGuard::Processes *processes = mProcessList->processModel()->processController();
-        mProcesses = processes;
-        if(processes) {
-            connect(processes, &KSysGuard::Processes::runCommand, this, &ProcessController::runCommand);
-        }
+        return false;
 
     }
 
@@ -178,9 +170,5 @@ bool ProcessController::addSensor(const QString& hostName,
     setSensorOk(sensors().at(0)->isOk());
     Q_EMIT processListChanged();
     return true;
-}
-
-void ProcessController::runCommand(const QString &command, int id) {
-    sendRequest(sensors().at(0)->hostName(), command, id);
 }
 
