@@ -70,14 +70,14 @@ void Workspace::saveProperties( KConfigGroup& cfg )
 
 void Workspace::readProperties( const KConfigGroup& cfg )
 {
-  QStringList selectedSheets = cfg.readPathEntry( "SelectedSheets", QStringList() );
+  QStringList selectedSheets = QStringList(); // cfg.readPathEntry( "SelectedSheets", QStringList() );
 
   if ( selectedSheets.isEmpty() ) {
    /* If SelectedSheets config entry is not there, then it's
     * probably the first time the user has started KSysGuard. We
     * then "restore" a special default configuration. */
     selectedSheets << QStringLiteral("ProcessTable.sgrd");
-    selectedSheets << QStringLiteral("SystemLoad2.sgrd");
+    // selectedSheets << QStringLiteral("SystemLoad2.sgrd");
   } else if(selectedSheets[0] != QStringLiteral("ProcessTable.sgrd")) {
     //We need to make sure that this is really is the process table on the first tab. No GUI way of changing this, but should make sure anyway.
     //Plus this migrates users from the kde3 setup
@@ -85,10 +85,10 @@ void Workspace::readProperties( const KConfigGroup& cfg )
     selectedSheets.prepend( QStringLiteral("ProcessTable.sgrd"));
   }
 
-  int oldSystemLoad = selectedSheets.indexOf(QStringLiteral("SystemLoad.sgrd"));
-  if(oldSystemLoad != -1) {
-    selectedSheets.replace(oldSystemLoad, QStringLiteral("SystemLoad2.sgrd"));
-  }
+  // int oldSystemLoad = selectedSheets.indexOf(QStringLiteral("SystemLoad.sgrd"));
+  // if(oldSystemLoad != -1) {
+  //   selectedSheets.replace(oldSystemLoad, QStringLiteral("SystemLoad2.sgrd"));
+  // }
 
   QString filename;
   for ( QStringList::Iterator it = selectedSheets.begin(); it != selectedSheets.end(); ++it ) {
