@@ -1383,7 +1383,7 @@ QVariant ProcessModel::data(const QModelIndex &index, int role) const
             if (value.canConvert(QMetaType(QMetaType::LongLong)) && value.typeId() != QMetaType::QString) {
                 return (int)(Qt::AlignRight | Qt::AlignVCenter);
             }
-            return (int)(Qt::AlignLeft | Qt::AlignVCenter);
+            return (int)(Qt::AlignHCenter);
         }
         }
         return QVariant();
