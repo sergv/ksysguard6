@@ -96,9 +96,6 @@ public:
      */
     bool isSimpleMode() const;
 
-    /** Returns the total amount of physical memory in the machine. */
-    qlonglong totalMemory() const;
-
     /** This returns a QModelIndex for the given process.  It has to look up the parent for this pid, find the offset this
      *  pid is from the parent, and return that.  It's not that slow, but does involve a couple of hash table lookups.
      */
