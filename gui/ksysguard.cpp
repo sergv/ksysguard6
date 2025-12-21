@@ -113,34 +113,10 @@ TopLevel::TopLevel()
 
   // create actions for menu entries
   mRefreshTabAction = KStandardAction::redisplay(mWorkSpace,SLOT(refreshActiveWorksheet()),actionCollection());
-  mNewWorksheetAction = actionCollection()->addAction(QStringLiteral("new_worksheet"));
-  mNewWorksheetAction->setIcon(QIcon::fromTheme(QStringLiteral("tab-new")));
-  connect(mNewWorksheetAction, &QAction::triggered, mWorkSpace, &Workspace::newWorkSheet);
-  mInsertWorksheetAction = actionCollection()->addAction(QStringLiteral("import_worksheet"));
-  mInsertWorksheetAction->setIcon(QIcon::fromTheme(QStringLiteral("document-open")) );
-  connect(mInsertWorksheetAction, SIGNAL(triggered(bool)), mWorkSpace, SLOT(importWorkSheet()));
-  mTabExportAction = actionCollection()->addAction( QStringLiteral("export_worksheet") );
-  mTabExportAction->setIcon( QIcon::fromTheme(QStringLiteral("document-save-as")) );
-  connect(mTabExportAction, SIGNAL(triggered(bool)), mWorkSpace, SLOT(exportWorkSheet()));
-  mTabRemoveAction = actionCollection()->addAction( QStringLiteral("remove_worksheet") );
-  mTabRemoveAction->setIcon( QIcon::fromTheme(QStringLiteral("tab-close")) );
-  connect(mTabRemoveAction, SIGNAL(triggered(bool)), mWorkSpace, SLOT(removeWorkSheet()));
-  mMonitorRemoteAction = actionCollection()->addAction( QStringLiteral("connect_host") );
-  mMonitorRemoteAction->setIcon( QIcon::fromTheme(QStringLiteral("network-connect")) );
-  connect(mMonitorRemoteAction, &QAction::triggered, this, &TopLevel::connectHost);
   //knewstuff2 action
-  mHotNewWorksheetAction = actionCollection()->addAction( QStringLiteral("get_new_worksheet") );
-  mHotNewWorksheetAction->setIcon( QIcon::fromTheme(QStringLiteral("network-server")) );
-  connect(mHotNewWorksheetAction, &QAction::triggered, mWorkSpace, &Workspace::getHotNewWorksheet);
-  mHotNewWorksheetUploadAction = actionCollection()->addAction( QStringLiteral("upload_worksheet") );
-  mHotNewWorksheetUploadAction->setIcon( QIcon::fromTheme(QStringLiteral("network-server")) );
-  connect(mHotNewWorksheetUploadAction, &QAction::triggered, mWorkSpace, &Workspace::uploadHotNewWorksheet);
 
   mQuitAction = nullptr;
 
-  mConfigureSheetAction = actionCollection()->addAction( QStringLiteral("configure_sheet") );
-  mConfigureSheetAction->setIcon( QIcon::fromTheme(QStringLiteral("configure")) );
-  connect(mConfigureSheetAction, &QAction::triggered, this, &TopLevel::configureCurrentSheet);
   // set up 'Settings' menu
   mShowMenuBarAction = KStandardAction::showMenubar(this, &TopLevel::toggleShowMenuBar, actionCollection());
 
@@ -174,40 +150,25 @@ void TopLevel::setLocalProcessController(ProcessController * localProcessControl
 void TopLevel::retranslateUi()
 {
   setPlainCaption( i18n( "System Monitor" ) );
-  mRefreshTabAction->setText(i18n("&Refresh Tab"));
-  mNewWorksheetAction->setText(i18n( "&New Tab..." ));
-  mInsertWorksheetAction->setText(i18n( "Import Tab Fr&om File..." ));
-  mTabExportAction->setText( i18n( "Save Tab &As..." ) );
-  mTabRemoveAction->setText( i18n( "&Close Tab" ) );
-  mMonitorRemoteAction->setText( i18n( "Monitor &Remote Machine..." ) );
-  mHotNewWorksheetAction->setText( i18n( "&Download New Tabs..." ) );
-  mHotNewWorksheetUploadAction->setText( i18n( "&Upload Current Tab..." ) );
 
-  mConfigureSheetAction->setText( i18n( "Tab &Properties" ) );
-  if(mQuitAction) {
-    QAction *tmpQuitAction = KStandardAction::quit( nullptr, nullptr, nullptr );
+  if (mQuitAction) {
+    QAction *tmpQuitAction = KStandardAction::quit(nullptr, nullptr, nullptr);
     mQuitAction->setText(tmpQuitAction->text());
     mQuitAction->setWhatsThis(tmpQuitAction->whatsThis());
     mQuitAction->setToolTip(tmpQuitAction->toolTip());
     delete tmpQuitAction;
-  } else
-    mQuitAction = KStandardAction::quit( this, SLOT(close()), actionCollection() );
+  } else {
+    mQuitAction =
+        KStandardAction::quit(this, SLOT(close()), actionCollection());
+  }
 }
 
-void TopLevel::configureCurrentSheet() {
-  mWorkSpace->configure();
-  mRefreshTabAction->setVisible( mWorkSpace->currentWorkSheet()->updateInterval() == 0 );
-}
 void TopLevel::currentTabChanged(int index)
 {
   QWidget *wdg = mWorkSpace->widget(index);
   WorkSheet *sheet = (WorkSheet *)(wdg);
   Q_ASSERT(sheet);
   bool locked = !sheet || sheet->isLocked();
-  mTabRemoveAction->setVisible(!locked);
-  mTabExportAction->setVisible(!locked);
-  mHotNewWorksheetUploadAction->setVisible(!locked);
-  mMonitorRemoteAction->setVisible(!locked);
 
   //only show refresh option is update interval is 0 (manual)
   mRefreshTabAction->setVisible( sheet->updateInterval() == 0 );
@@ -303,45 +264,6 @@ void TopLevel::updateStatusBar()
 
   // call timerEvent to fill the status bar with real values
   timerEvent( nullptr );
-}
-
-void TopLevel::connectHost()
-{
-  HostConnector hostConnector( this );
-
-//  hostConnector.setHostNames( mHostList );
-//  hostConnector.setCommands( mCommandList );
-
-//  hostConnector.setCurrentHostName( "" );
-
-  if ( !hostConnector.exec() )
-    return;
-
-//  mHostList = hostConnector.hostNames();
-//  mCommandList = hostConnector.commands();
-
-  QString shell = QLatin1String("");
-  QString command = QLatin1String("");
-  int port = -1;
-
-  /* Check which radio button is selected and set parameters
-   * appropriately. */
-  if ( hostConnector.useSsh() )
-    shell = QStringLiteral("ssh");
-  else if ( hostConnector.useRsh() )
-    shell = QStringLiteral("rsh");
-  else if ( hostConnector.useDaemon() )
-    port = hostConnector.port();
-  else
-    command = hostConnector.currentCommand();
-
-  KSGRD::SensorMgr->engage( hostConnector.currentHostName(), shell, command, port );
-}
-
-void TopLevel::disconnectHost()
-{
-  if(mSensorBrowser)
-    mSensorBrowser->disconnect();
 }
 
 bool TopLevel::event( QEvent *e )

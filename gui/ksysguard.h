@@ -70,12 +70,9 @@ class TopLevel : public KXmlGuiWindow, public KSGRD::SensorClient
     bool queryClose() override;
 
   protected Q_SLOTS:
-    void connectHost();
-    void disconnectHost();
     void updateStatusBar();
     void currentTabChanged(int index);
     void updateProcessCount();
-    void configureCurrentSheet();
     void toggleShowMenuBar();
 
   private:
@@ -92,15 +89,7 @@ class TopLevel : public KXmlGuiWindow, public KSGRD::SensorClient
     Workspace* mWorkSpace;
 
     int mTimerId;
-    QAction *mNewWorksheetAction;
-    QAction *mInsertWorksheetAction;
-    QAction *mTabExportAction;
-    QAction *mTabRemoveAction;
-    QAction *mMonitorRemoteAction;
-    QAction *mHotNewWorksheetAction;
     QAction *mQuitAction;
-    QAction *mConfigureSheetAction;
-    QAction *mHotNewWorksheetUploadAction;
     QAction *mRefreshTabAction;
     QAction *mShowMenuBarAction;
     QLabel *sbProcessCount;
