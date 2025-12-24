@@ -18,20 +18,6 @@
 
           stdenv = pkgs.stdenv;
 
-          ksysguard-desktop = pkgs.makeDesktopItem {
-            name = "ksysguard";
-            exec = "ksysguard6"; # recommended way, so users can wrap around it?
-            desktopName = "KSysGuard";
-            genericName = "KSysGuard";
-            icon = "utilities-system-monitor";
-            comment = "Monitor processes";
-            categories = [ "Utility" ];
-            terminal = false;
-            keywords = [
-              "system monitor"
-            ];
-          };
-
           libksysguard = pkgs.kdePackages.libksysguard.overrideAttrs (old: {
             patches = (old.patches or []) ++ [./0001-Export-header-still-used-by-ksysguard.patch];
           });
@@ -91,8 +77,6 @@
             #     mkdir -p "$out/share/icons/hicolor/scalable/apps"
             #     install -Dm644 icons/logo.svg $out/share/icons/hicolor/scalable/apps/org.reciperium.hello.svg
             #   '';
-
-            desktopItems = [ ksysguard-desktop ];
           };
         };
       }
