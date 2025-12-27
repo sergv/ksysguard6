@@ -19,7 +19,10 @@
           stdenv = pkgs.stdenv;
 
           libksysguard = pkgs.kdePackages.libksysguard.overrideAttrs (old: {
-            patches = (old.patches or []) ++ [./0001-Export-header-still-used-by-ksysguard.patch];
+            patches = (old.patches or []) ++ [
+              ./0001-Export-header-still-used-by-ksysguard.patch
+              ./0002-Disable-GPU-and-network-plugins.patch
+            ];
           });
 
       in {
@@ -38,7 +41,6 @@
 
                 pkgs.lm_sensors
 
-                pkgs.libpcap
                 pkgs.libnl
               ];
 
