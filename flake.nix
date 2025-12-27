@@ -89,14 +89,15 @@
       });
 
       overlays.default = final: prev: {
-        ksysguard6 = mkKsysguard6 final;
+        sergv-extensions = {
+          ksysguard6 = mkKsysguard6 final;
+        };
 
         kdePackages = prev.kdePackages // {
 
           libksysguard = prev.kdePackages.libksysguard.overrideAttrs (old: {
             patches = (old.patches or []) ++ [
               ./0001-Export-header-still-used-by-ksysguard.patch
-              ./0002-Disable-GPU-and-network-plugins.patch
             ];
           });
 
