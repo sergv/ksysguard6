@@ -56,6 +56,9 @@
               # "VERBOSE=ON"
             ];
 
+            # Zero out PATH so that ksysguard will be unable to find ‘nvidia-smi’ executable.
+            qtWrapperArgs = [ ''--set PATH ""'' ];
+
             # How general mkDerivation looks like
             # buildPhase = ''
             #   ./configure
