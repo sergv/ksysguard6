@@ -12,17 +12,6 @@
         lib = nixpkgs.lib;
         forEachSystem = lib.genAttrs systems;
 
-        # libksysguard =
-        #   let pkgs = nixpkgs.legacyPackages.${system};
-        #   in (self.overlays.fix-libksysguard pkgs pgks).kdePackages.libksysguard;
-
-        # libksysguard = pkgs.kdePackages.libksysguard.overrideAttrs (old: {
-        #   patches = (old.patches or []) ++ [
-        #     ./0001-Export-header-still-used-by-ksysguard.patch
-        #     ./0002-Disable-GPU-and-network-plugins.patch
-        #   ];
-        # });
-
         mkKsysguard6 = pkgs:
           pkgs.stdenv.mkDerivation {
             pname = "ksysguard";
