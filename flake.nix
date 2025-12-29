@@ -85,17 +85,14 @@
           ksysguard6 = mkKsysguard6 final;
         };
 
-        kdePackages = prev.kdePackages // {
-
+        kdePackages = prev.lib.recursiveUpdate prev.kdePackages {
           libksysguard = prev.kdePackages.libksysguard.overrideAttrs (old: {
             patches = (old.patches or []) ++ [
               ./0001-Export-header-still-used-by-ksysguard.patch
               ./0002-Disable-GPU-and-network-plugins.patch
             ];
           });
-
         };
-
       };
     };
 }
