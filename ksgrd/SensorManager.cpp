@@ -10,6 +10,7 @@
 #include "ksgrd_debug.h"
 #include <QCoreApplication>
 #include <QDebug>
+#include <QDir>
 #include <kconfiggroup.h>
 #include <klocalizedstring.h>
 
@@ -356,8 +357,11 @@ bool SensorManager::sendRequest(const QString &hostName, const QString &req, Sen
 {
     SensorAgent *agent = mAgents.value(hostName);
     if (!agent && hostName == QLatin1String("localhost")) {
+        QDir exePath = QDir(QCoreApplication::applicationDirPath());
+        exePath.makeAbsolute();
+        QString ksysguarddPath = exePath.canonicalPath() + QStringLiteral("/ksysguardd");
         // we should always be able to reconnect to localhost
-        engage(QStringLiteral("localhost"), QLatin1String(""), QStringLiteral("ksysguardd"), -1);
+        engage(QStringLiteral("localhost"), QLatin1String(""), ksysguarddPath, -1);
         agent = mAgents.value(hostName);
     }
     if (agent) {

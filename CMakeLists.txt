@@ -188,7 +188,7 @@ kdoctools_install(po)
 add_subdirectory( pics )
 add_subdirectory( example )
 
-# add_subdirectory( ksysguardd )
+add_subdirectory( ksysguardd )
 
 option(WITH_SYSTEMMONITOR "Build with Plasma Dekstop SystemMonitor" OFF)
 if(WITH_SYSTEMMONITOR)

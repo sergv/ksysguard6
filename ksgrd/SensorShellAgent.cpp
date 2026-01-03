@@ -7,7 +7,9 @@
 
 */
 
+#include <QCoreApplication>
 #include <QDebug>
+#include <QDir>
 #include <klocalizedstring.h>
 #include <kprocess.h>
 #include <kshell.h>
@@ -52,8 +54,13 @@ bool SensorShellAgent::start(const QString &host, const QString &shell, const QS
 
     if (!command.isEmpty()) {
         *mDaemon << KShell::splitArgs(command);
-    } else
-        *mDaemon << mShell << hostName() << QStringLiteral("ksysguardd");
+    } else {
+        // We don’t usually arrive here, but let’s use full path here for completeness.
+        QDir exePath = QDir(QCoreApplication::applicationDirPath());
+        exePath.makeAbsolute();
+        QString ksysguarddPath = exePath.canonicalPath() + QStringLiteral("/ksysguardd");
+        *mDaemon << mShell << hostName() << ksysguarddPath;
+    }
     mDaemon->start();
 
     return true;
