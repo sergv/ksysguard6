@@ -15,7 +15,7 @@
         mkKsysguard6 = pkgs:
           pkgs.stdenv.mkDerivation {
             pname = "ksysguard";
-            version = "6.0.1";
+            version = "6.0.2";
 
             src = ./.;
 
@@ -31,7 +31,8 @@
 
             # takes care of placing the .desktop under $out/share/applications/hello.desktop
             nativeBuildInputs = [
-              pkgs.extra-cmake-modules
+              pkgs.cmake
+              pkgs.kdePackages.extra-cmake-modules
               pkgs.kdePackages.kdoctools
               pkgs.qt6.wrapQtAppsHook
             ] ++

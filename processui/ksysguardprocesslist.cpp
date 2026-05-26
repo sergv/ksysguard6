@@ -55,6 +55,8 @@
 #include "scripting.h"
 #include "ui_ProcessWidgetUI.h"
 
+#include <processcore/enums.h>
+
 #include <sys/types.h>
 #include <unistd.h>
 
@@ -1314,9 +1316,18 @@ void KSysGuardProcessList::reniceSelectedProcesses()
     updateList();
 }
 
-bool KSysGuardProcessList::changeIoScheduler(const QList<long long> &pids, KSysGuard::Process::IoPriorityClass newIoSched, int newIoSchedPriority)
+bool KSysGuardProcessList::changeIoScheduler(const QList<long long> &pids, KSysGuard::Process::IoPriorityClass newIOSched, int newIoSchedPriority)
 {
-    auto result = d->mProcessController->setIOScheduler(pids, newIoSched, newIoSchedPriority);
+    KSysGuard::Enums::IoPriority::IoPriority convertedNewIOSched;
+    switch (newIOSched) {
+#define CASE(XXX) case KSysGuard::Process::IoPriorityClass::XXX: convertedNewIOSched = KSysGuard::Enums::IoPriority::IoPriority::XXX; break;
+        CASE(None);
+        CASE(RealTime);
+        CASE(BestEffort);
+        CASE(Idle);
+#undef CASE
+    }
+    auto result = d->mProcessController->setIoScheduler(pids, convertedNewIOSched, newIoSchedPriority);
     if (result == KSysGuard::ProcessController::Result::Success) {
         updateList();
         return true;
@@ -1331,7 +1342,19 @@ bool KSysGuardProcessList::changeIoScheduler(const QList<long long> &pids, KSysG
 
 bool KSysGuardProcessList::changeCpuScheduler(const QList<long long> &pids, KSysGuard::Process::Scheduler newCpuSched, int newCpuSchedPriority)
 {
-    auto result = d->mProcessController->setCPUScheduler(pids, newCpuSched, newCpuSchedPriority);
+    KSysGuard::Enums::Scheduler::Scheduler convertedNewCpuSched;
+    switch (newCpuSched) {
+#define CASE(XXX) case KSysGuard::Process::Scheduler::XXX: convertedNewCpuSched = KSysGuard::Enums::Scheduler::Scheduler::XXX; break;
+        CASE(Other);
+        CASE(Fifo);
+        CASE(RoundRobin);
+        CASE(Batch);
+        CASE(SchedulerIdle);
+        CASE(Interactive);
+#undef CASE
+    }
+
+    auto result = d->mProcessController->setCpuScheduler(pids, convertedNewCpuSched, newCpuSchedPriority);
 
     if (result == KSysGuard::ProcessController::Result::Success) {
         updateList();
